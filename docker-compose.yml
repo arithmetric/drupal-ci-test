@@ -14,5 +14,5 @@ web:
   volumes:
     - .:/var/www/html
   links:
-    - php:php
+    - mysql:mysql
 
