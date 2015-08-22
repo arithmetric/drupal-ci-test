@@ -1,11 +1,3 @@
-mysql:
-  image: unocha/percona55
-  environment:
-    DNSDOCK_NAME: mysql
-    DNSDOCK_IMAGE: test
-  volumes:
-    - /data/test/mysql:/var/lib/mysql
-  hostname: mysql.fts.vm
 web:
   image: phase2/nginx16-php55
   environment:
@@ -13,6 +5,3 @@ web:
     DNSDOCK_IMAGE: test
   volumes:
     - .:/var/www/html
-  links:
-    - mysql:mysql
-
