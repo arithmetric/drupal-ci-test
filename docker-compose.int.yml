@@ -9,4 +9,4 @@ www:
   links:
     - db
   volumes:
-    - ./html:/var/www/html
+    - ./build/html:/var/www/html

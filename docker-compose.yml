@@ -13,5 +13,5 @@ www:
   links:
     - db
   volumes:
-    - ./html:/var/www/html
+    - ./build/html:/var/www/html
     - /data/d8/files:/var/www/html/sites/default/files
