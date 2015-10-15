@@ -8,3 +8,5 @@ www:
     service: www
   environment:
     VIRTUAL_HOST: d8test.ci.p2devcloud.com
+  links:
+    - db
