@@ -1,7 +1,17 @@
-web:
-  image: phase2/nginx16-php55
+db:
+  image: phase2/mariadb
+  environment:
+    DNSDOCK_NAME: db
+    DNSDOCK_IMAGE: d8
+  volumes:
+    - /data/d8/mysql:/var/lib/mysql
+www:
+  image: phase2/apache24php55
   environment:
     DNSDOCK_NAME: www
-    DNSDOCK_IMAGE: test
+    DNSDOCK_IMAGE: d8
+  links:
+    - db
   volumes:
-    - .:/var/www/html
+    - ./html:/var/www/html
+    - /data/d8/files:/var/www/html/sites/default/files

@@ -1,0 +1,41 @@
+# Container for running operations starting a cli for build commands
+# Usage: docker-compose -y build.yml run cli
+cli:
+  image: phase2/devtools-build
+  entrypoint: []
+  working_dir: /code
+  command: /bin/bash
+  volumes:
+    - .:/code/
+    - ./html:/var/www/html
+  links:
+    - db
+
+# Container for running drush in the docroot.
+# Usage: docker-compose -y build.yml run drush <command>
+# Where <command> is a direct drush command like cache-rebuild
+drush:
+  image: phase2/devtools-build
+  entrypoint: [ "drush" ]
+  working_dir: /var/www/html
+  volumes:
+    - ./html:/var/www/html
+  links:
+    - db
+
+# Bring in to reuse on our drush container
+db:
+  extends:
+    file: docker-compose.yml
+    service: db
+
+# Container for the drush make command to build the site    
+# Usage: docker-compose -y build.yml run make
+make:
+  image: phase2/devtools-build
+  entrypoint: []
+  working_dir: /code
+  command: drush make ./drupal8.make ./html 
+  volumes:
+    - .:/code/
+
