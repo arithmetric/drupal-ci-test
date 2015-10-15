@@ -1,0 +1,10 @@
+db:
+  extends:
+    file: docker-compose.yml
+    service: db
+www:
+  extends:
+    file: docker-compose.yml
+    service: www
+  environment:
+    VIRTUAL_HOST: d8test.ci.p2devcloud.com
