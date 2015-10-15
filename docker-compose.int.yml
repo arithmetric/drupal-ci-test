@@ -3,10 +3,10 @@ db:
     file: docker-compose.yml
     service: db
 www:
-  extends:
-    file: docker-compose.yml
-    service: www
+  image: phase2/apache24php55
   environment:
     VIRTUAL_HOST: d8test.ci.p2devcloud.com
   links:
     - db
+  volumes:
+    - ./html:/var/www/html
