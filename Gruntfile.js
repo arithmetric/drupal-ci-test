@@ -8,4 +8,16 @@ module.exports = function(grunt) {
     grunt.loadTasks(__dirname + '/bin/grunt');
   }
 
+  // Modify the default task to fully build and configure the project.
+  var tasksDefault = [
+    'bundle-install',
+    'composer:install',
+    'validate',
+    'drushmake:default',
+    'scaffold',
+    'compile-theme'
+  ];
+  grunt.task.renameTask('default', 'default-original');
+  grunt.registerTask('default', tasksDefault);
+
 };
