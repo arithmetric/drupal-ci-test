@@ -5,8 +5,12 @@ db:
 www:
   image: phase2/apache24php55
   environment:
-    VIRTUAL_HOST: d8test.ci.p2devcloud.com
+    PHP_XDEBUG: "true"
+    PHP_XHPROF: "true"
+    VIRTUAL_HOST: drupal-ci-test.ci.p2devcloud.com
   links:
     - db
   volumes:
+    - .:/code/
     - ./build/html:/var/www/html
+    - /data/drupal-ci-test/files:/var/www/html/sites/default/files

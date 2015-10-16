@@ -2,16 +2,20 @@ db:
   image: phase2/mariadb
   environment:
     DNSDOCK_NAME: db
-    DNSDOCK_IMAGE: d8
+    DNSDOCK_IMAGE: drupal-ci-test
+    MYSQL_DATABASE: drupal-ci-test_drupal
   volumes:
-    - /data/d8/mysql:/var/lib/mysql
+    - /data/drupal-ci-test/mysql:/var/lib/mysql
 www:
   image: phase2/apache24php55
   environment:
     DNSDOCK_NAME: www
-    DNSDOCK_IMAGE: d8
+    DNSDOCK_IMAGE: drupal-ci-test
+    PHP_XDEBUG: "true"
+    PHP_XHPROF: "true"
   links:
     - db
   volumes:
+    - .:/code/
     - ./build/html:/var/www/html
-    - /data/d8/files:/var/www/html/sites/default/files
+    - /data/drupal-ci-test/files:/var/www/html/sites/default/files

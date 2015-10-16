@@ -5,8 +5,15 @@
   },
   "domain": "project.vm",
   "packages": {
-    "srcFiles": ["!sites/*/files/**", "!xmlrpc.php", "!modules/php/*"],
-    "projFiles": ["README*", "bin/**"]
+    "srcFiles": [
+      "!sites/*/files/**",
+      "!xmlrpc.php",
+      "!modules/php/*"
+    ],
+    "projFiles": [
+      "README*",
+      "bin/**"
+    ]
   },
   "phpcs": {
     "path": "vendor/bin/phpcs"
@@ -20,5 +27,16 @@
   "behat": {
     "flags": "--tags ~@wip"
   },
-  "eslint": true
+  "eslint": true,
+  "buildPaths": {
+    "html": "/var/www/html"
+  },
+  "generated": {
+    "modified": [
+      {
+        "name": "generator-p2-env",
+        "version": "0.1.0"
+      }
+    ]
+  }
 }
