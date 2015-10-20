@@ -9,6 +9,6 @@
  */
 
 $aliases['drupal-ci-test'] = array(
-  'url' => isset($_ENV['VIRTUAL_HOST']) ? $_ENV['VIRTUAL_HOST'] : 'http://www.drupal-ci-test.vm/',
+  'uri' => isset($_ENV['VIRTUAL_HOST']) ? $_ENV['VIRTUAL_HOST'] : 'http://www.drupal-ci-test.vm/',
   'root' => '/var/www/html'
 );

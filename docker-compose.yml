@@ -6,6 +6,13 @@ db:
     MYSQL_DATABASE: drupal-ci-test_drupal
   volumes:
     - /data/drupal-ci-test/mysql:/var/lib/mysql
+
+cache:
+  image: phase2/memcache
+  environment:
+    DNSDOCK_NAME: cache
+    DNSDOCK_IMAGE: drupal-ci-test
+
 www:
   image: phase2/apache24php55
   environment:
@@ -15,6 +22,7 @@ www:
     PHP_XHPROF: "true"
   links:
     - db
+    - cache
   volumes:
     - .:/code/
     - ./build/html:/var/www/html

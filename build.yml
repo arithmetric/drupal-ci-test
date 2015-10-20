@@ -11,6 +11,7 @@ cli:
     - ./build/html:/var/www/html
   links:
     - db
+    - cache
 
 # Container for running drush in the docroot.
 # Usage: docker-compose -y build.yml run drush <command>
@@ -25,6 +26,7 @@ drush:
     - ./build/html:/var/www/html
   links:
     - db
+    - cache
 
 # Container for running grunt in the docroot.
 # Usage: docker-compose -f build.yml run grunt <command>
@@ -42,3 +44,8 @@ db:
   extends:
     file: docker-compose.yml
     service: db
+
+cache:
+  extends:
+    file: docker-compose.yml
+    service: cache

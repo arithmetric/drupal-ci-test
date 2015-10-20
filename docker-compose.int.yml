@@ -2,6 +2,12 @@ db:
   extends:
     file: docker-compose.yml
     service: db
+
+cache:
+  extends:
+    file: docker-compose.yml
+    service: cache
+
 www:
   image: phase2/apache24php55
   environment:
@@ -10,6 +16,7 @@ www:
     VIRTUAL_HOST: drupal-ci-test.ci.p2devcloud.com
   links:
     - db
+    - cache
   volumes:
     - .:/code/
     - ./build/html:/var/www/html
